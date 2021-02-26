@@ -16,8 +16,8 @@ namespace GameOfLifeTests
         }
 
         [DataTestMethod]
-        [DataRow(2, 1, "(2,1)", DisplayName = "row is at exact row count")]
-        [DataRow(1, 2, "(1,2)", DisplayName = "column is at exact column count")]
+        [DataRow(2, 1, "(2,1)", DisplayName = "row index equal to number of rows it not allowed")]
+        [DataRow(1, 2, "(1,2)", DisplayName = "column index equal to number of columns it not allowed")]
         [DataRow(-1, 1, "(-1,1)", DisplayName = "negative row index is not allowed")]
         public void cells_outside_of_the_bounds_of_the_game_cannot_be_accessed(int row, int column,
             string formattedIndex)

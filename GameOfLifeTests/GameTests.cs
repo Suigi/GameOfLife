@@ -98,18 +98,23 @@ namespace GameOfLifeTests
 
         public Game Next()
         {
-            var x = new IndexMechanics(Rows, Columns);
             List<(int, int)> updatedState = new List<(int, int)>();
             foreach (var index in seed)
             {
-                var numberOfAliveNeighbors =
-                    x.Neighbors(index).Count(n => IsCellAlive(n.row, n.column));
-                if (numberOfAliveNeighbors == 2)
+                if (NumberOfAliveNeighbors(index) == 2)
                 {
                     updatedState.Add(index);
                 }
             }
+
             return new Game(Rows, Columns, updatedState.ToArray());
+        }
+
+        private int NumberOfAliveNeighbors((int row, int colum) index)
+        {
+            var numberOfAliveNeighbors = new IndexMechanics(Rows, Columns).Neighbors(index)
+                .Count(n => IsCellAlive(n.row, n.column));
+            return numberOfAliveNeighbors;
         }
     }
 }

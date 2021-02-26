@@ -10,7 +10,7 @@ namespace GameOfLife
         {
             var stable = false;
             var game =
-                new GameSeeder(RandomNumbers.FromSeed(new Random().Next()), 0.1).Create(15, 15);
+                new GameSeeder(RandomNumbers.FromSeed(new Random().Next()), 0.2).Create(40, 40);
             var printer = new GamePrinter();
             while (!stable)
             {

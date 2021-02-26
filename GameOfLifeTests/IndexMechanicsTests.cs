@@ -74,14 +74,18 @@ namespace GameOfLifeTests
 
         private int WrapRow(int row)
         {
-            if (row == rows)
+            var upperBound = rows;
+            if (row >= upperBound)
             {
                 return 0;
             }
 
-            return row < 0
-                ? rows - 1
-                : row;
+            if (row <= 0)
+            {
+                return upperBound - 1;
+            }
+
+            return row;
         }
         
         public IEnumerable<(int row,int column)> Neighbors((int row, int column) valueTuple)

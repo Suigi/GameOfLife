@@ -47,6 +47,14 @@ namespace GameOfLifeTests
         }
 
         [TestMethod]
+        public void a_game_can_list_its_alive_cells()
+        {
+            var seededGame = new Game(10, 10, (2, 2));
+
+            seededGame.AliveCells.Should().BeEquivalentTo((2, 2));
+        }
+
+        [TestMethod]
         public void single_alive_cell_is_dead_next_round()
         {
             var initialGame = new Game(10, 10, (2, 2));
@@ -77,5 +85,6 @@ namespace GameOfLifeTests
             var updatedGame = initialGame.Next();
             updatedGame.IsCellAlive(2, 2).Should().BeTrue();
         }
+
     }
 }

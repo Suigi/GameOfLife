@@ -19,6 +19,8 @@ namespace GameOfLife
 
         public int Columns { get; }
 
+        public IEnumerable<(int row, int column)> AliveCells => throw new NotImplementedException();
+
         public bool IsCellAlive(int row, int column)
         {
             CheckBounds(row, column);

@@ -115,14 +115,14 @@ namespace GameOfLifeTests
         
         public IEnumerable<(int row,int column)> Neighbors((int row, int column) valueTuple)
         {
-            yield return (WrapRow(valueTuple.row - 1), WrapColumn( valueTuple.column - 1 ));
+            yield return (WrapRow(valueTuple.row - 1), WrapColumn(valueTuple.column - 1));
             yield return (WrapRow(valueTuple.row - 1), valueTuple.column);
-            yield return (WrapRow(valueTuple.row - 1), WrapColumn( valueTuple.column + 1 ));
-            yield return (valueTuple.row, WrapColumn( valueTuple.column - 1 ));
-            yield return (valueTuple.row, WrapColumn( valueTuple.column + 1 ));
-            yield return (WrapRow(valueTuple.row + 1), WrapColumn( valueTuple.column - 1 ));
+            yield return (WrapRow(valueTuple.row - 1), WrapColumn(valueTuple.column + 1));
+            yield return (valueTuple.row, WrapColumn(valueTuple.column - 1));
+            yield return (valueTuple.row, WrapColumn(valueTuple.column + 1));
+            yield return (WrapRow(valueTuple.row + 1), WrapColumn(valueTuple.column - 1));
             yield return (WrapRow(valueTuple.row + 1), valueTuple.column);
-            yield return (WrapRow(valueTuple.row + 1), WrapColumn( valueTuple.column + 1 ));
+            yield return (WrapRow(valueTuple.row + 1), WrapColumn(valueTuple.column + 1));
         }
     }
 }

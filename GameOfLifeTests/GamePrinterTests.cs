@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 using FluentAssertions;
 using GameOfLife;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -51,33 +50,6 @@ ____x
         private void AssertPrintout(string actual, string expected)
         {
             actual.Trim().Should().Be(expected.Trim());
-        }
-    }
-
-    public class GamePrinter
-    {
-        public string Print(Game game)
-        {
-            var builder = new StringBuilder();
-
-            for (int row = 0; row < game.Rows; row++)
-            {
-                for (int column = 0; column < game.Columns; column++)
-                {
-                    if (game.IsCellAlive(row, column))
-                    {
-                        builder.Append('x');
-                    }
-                    else
-                    {
-                        builder.Append("_");
-                    }
-                }
-
-                builder.AppendLine();
-            }
-
-            return builder.ToString();
         }
     }
 }

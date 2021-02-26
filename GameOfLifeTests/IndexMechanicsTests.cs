@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -18,7 +19,7 @@ namespace GameOfLifeTests
     {
         public static IEnumerable<(int,int)> Neighbors((int, int) valueTuple)
         {
-            throw new System.NotImplementedException();
+            return Enumerable.Repeat<(int, int)>(valueTuple, 8);
         }
     }
 }

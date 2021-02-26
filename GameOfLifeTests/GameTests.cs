@@ -36,6 +36,15 @@ namespace GameOfLifeTests
             var newGame = new Game(10, 10);
             newGame.IsCellAlive(2, 2).Should().BeFalse();
         }
+
+        [TestMethod]
+        public void a_game_remembers_initially_active_cells()
+        {
+            var seededGame = new Game(10, 10, (2, 2));
+
+            seededGame.IsCellAlive(2, 2).Should().BeTrue();
+        }
+
     }
 
     public class Game

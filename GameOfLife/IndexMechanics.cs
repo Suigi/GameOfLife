@@ -49,5 +49,10 @@ namespace GameOfLife
             yield return (WrapRow(valueTuple.row + 1), valueTuple.column);
             yield return (WrapRow(valueTuple.row + 1), WrapColumn(valueTuple.column + 1));
         }
+
+        public IEnumerable<(int row, int column)> AllIndices()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

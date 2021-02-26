@@ -71,6 +71,14 @@ namespace GameOfLifeTests
             updatedGame.IsCellAlive(2, 2).Should().BeTrue();
         }
 
+        [TestMethod]
+        public void dead_cell_with_three_alive_neighbors_becomes_alive()
+        {
+            var initialGame = new Game(10, 10, (1, 2), (3, 2), (2, 1));
+            var updatedGame = initialGame.Next();
+            updatedGame.IsCellAlive(2, 2).Should().BeTrue();
+        }
+
 
     }
 

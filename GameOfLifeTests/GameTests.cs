@@ -52,12 +52,17 @@ namespace GameOfLifeTests
 
         public bool IsCellAlive(int row, int column)
         {
+            CheckBounds(row, column);
+
+            return false;
+        }
+
+        private void CheckBounds(int row, int column)
+        {
             if (row >= Rows || row < 0 || column >= Columns || column < 0)
             {
                 throw new IndexOutOfRangeException($"Game index ({row},{column}) is out of bounds");
             }
-
-            return false;
         }
     }
 }

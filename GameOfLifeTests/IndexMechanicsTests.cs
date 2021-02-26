@@ -33,9 +33,16 @@ namespace GameOfLifeTests
 
     public static class IndexMechanics
     {
-        public static IEnumerable<(int,int)> Neighbors((int, int) valueTuple)
+        public static IEnumerable<(int row,int column)> Neighbors((int row, int column) valueTuple)
         {
-            return Enumerable.Repeat<(int, int)>(valueTuple, 8);
+            yield return (valueTuple.row - 1, valueTuple.column - 1);
+            yield return (valueTuple.row - 1, valueTuple.column);
+            yield return (valueTuple.row - 1, valueTuple.column + 1);
+            yield return (valueTuple.row, valueTuple.column - 1);
+            yield return (valueTuple.row, valueTuple.column + 1);
+            yield return (valueTuple.row + 1, valueTuple.column - 1);
+            yield return (valueTuple.row + 1, valueTuple.column);
+            yield return (valueTuple.row + 1, valueTuple.column + 1);
         }
     }
 }

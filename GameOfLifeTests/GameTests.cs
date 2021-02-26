@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -97,7 +98,18 @@ namespace GameOfLifeTests
 
         public Game Next()
         {
-            return new Game(Rows, Columns);
+            var x = new IndexMechanics(Rows, Columns);
+            List<(int, int)> updatedState = new List<(int, int)>();
+            foreach (var index in seed)
+            {
+                var numberOfAliveNeighbors =
+                    x.Neighbors(index).Count(n => IsCellAlive(n.row, n.column));
+                if (numberOfAliveNeighbors == 2)
+                {
+                    updatedState.Add(index);
+                }
+            }
+            return new Game(Rows, Columns, updatedState.ToArray());
         }
     }
 }

@@ -20,7 +20,7 @@ namespace GameOfLifeTests
         public void cells_outside_of_the_bounds_of_the_game_cannot_be_accessed(int row, int column,
             string formattedIndex)
         {
-            var game = new Game(row, column);
+            var game = new Game(2, 2);
 
             Action act = () => game.IsCellAlive(row, column);
 

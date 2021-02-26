@@ -40,16 +40,8 @@ namespace GameOfLife
 
         public Game Next()
         {
-            List<(int, int)> updatedState = new List<(int, int)>();
-             foreach (var index in indexMechanics.AllIndices())
-             {
-                 if (IsCellAliveInNextIteration(index))
-                 {
-                     updatedState.Add(index);
-                 }
-             }
-            
-             return new Game(Rows, Columns, updatedState.ToArray());
+            var nextState = indexMechanics.AllIndices().Where(IsCellAliveInNextIteration).ToArray();
+            return new Game(Rows, Columns, nextState);
         }
 
         private bool IsCellAliveInNextIteration((int row, int column) index)

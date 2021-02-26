@@ -27,13 +27,13 @@ namespace GameOfLifeTests
     {
         public Game(int rows, int columns)
         {
+            Rows = rows;
+            Columns = columns;
         }
 
-        public int Rows
-        {
-            get { throw new System.NotImplementedException(); }
-            set { throw new System.NotImplementedException(); }
-        }
+        public int Rows { get; }
+
+        public int Columns { get; }
 
         public bool IsCellAlive(int i, int i1)
         {

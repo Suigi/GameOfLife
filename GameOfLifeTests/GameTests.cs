@@ -57,7 +57,7 @@ namespace GameOfLifeTests
                 throw new IndexOutOfRangeException($"Game index ({row},{column}) is out of bounds");
             }
 
-            if (column >= Columns)
+            if (column >= Columns || column < 0)
             {
                 throw new IndexOutOfRangeException($"Game index ({row},{column}) is out of bounds");
             }

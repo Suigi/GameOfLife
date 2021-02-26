@@ -7,13 +7,6 @@ namespace GameOfLifeTests
     public class GameTests
     {
         [TestMethod]
-        public void a_new_game_has_dead_cells()
-        {
-            var newGame = new Game(10, 10);
-            newGame.IsCellAlive(2, 2).Should().BeFalse();
-        }
-
-        [TestMethod]
         public void a_game_retains_its_size_in_rows_and_columns()
         {
             var game = new Game(2, 3);
@@ -21,6 +14,12 @@ namespace GameOfLifeTests
             game.Columns.Should().Be(3);
         }
 
+        [TestMethod]
+        public void a_new_game_has_dead_cells()
+        {
+            var newGame = new Game(10, 10);
+            newGame.IsCellAlive(2, 2).Should().BeFalse();
+        }
     }
 
     public class Game

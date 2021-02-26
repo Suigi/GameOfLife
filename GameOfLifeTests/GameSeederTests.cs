@@ -11,15 +11,15 @@ namespace GameOfLifeTests
         public void seeder_creates_a_new_game()
         {
             var seeder = new GameSeeder();
-            seeder.Create().Should().BeOfType<Game>();
+            seeder.Create(5, 5).Should().BeOfType<Game>();
         }
     }
 
     public class GameSeeder
     {
-        public Game Create()
+        public Game Create(int rows, int columns)
         {
-            throw new System.NotImplementedException();
+            return new Game(rows, columns);
         }
     }
 }

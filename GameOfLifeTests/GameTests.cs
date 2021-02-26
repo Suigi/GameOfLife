@@ -115,15 +115,35 @@ namespace GameOfLifeTests
         public Game Next()
         {
             List<(int, int)> updatedState = new List<(int, int)>();
-            foreach (var index in seed)
+            foreach (var index in AllIndices())
             {
-                if (NumberOfAliveNeighbors(index) == 2 || NumberOfAliveNeighbors(index) == 3)
+                var numberOfAliveNeighbors = NumberOfAliveNeighbors(index);
+                if (numberOfAliveNeighbors == 3
+                    || (numberOfAliveNeighbors == 2 && IsCellAlive(index.row, index.column)))
                 {
                     updatedState.Add(index);
                 }
             }
+            // foreach (var index in seed)
+            // {
+            //     if (NumberOfAliveNeighbors(index) == 2 || NumberOfAliveNeighbors(index) == 3)
+            //     {
+            //         updatedState.Add(index);
+            //     }
+            // }
 
             return new Game(Rows, Columns, updatedState.ToArray());
+        }
+
+        private IEnumerable<(int row, int column)> AllIndices()
+        {
+            for (int row = 0; row < Rows; row++)
+            {
+                for (int column = 0; column < Columns; column++)
+                {
+                    yield return (row, column);
+                }
+            }
         }
 
         private int NumberOfAliveNeighbors((int row, int colum) index)

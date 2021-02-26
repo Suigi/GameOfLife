@@ -14,7 +14,7 @@ namespace GameOfLife
                 {
                     builder.Append(game.IsCellAlive(row, column)
                         ? "x"
-                        : "_");
+                        : ".");
                 }
 
                 builder.AppendLine();

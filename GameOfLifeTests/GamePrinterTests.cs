@@ -18,11 +18,11 @@ namespace GameOfLifeTests
 
             AssertPrintout(result,
                 @"
-_____
-_____
-_____
-_____
-_____
+.....
+.....
+.....
+.....
+.....
 "
             );
             result.Should().EndWith(Environment.NewLine);
@@ -38,11 +38,11 @@ _____
 
             AssertPrintout(result,
                 @"
-x____
-_x___
-__x__
-___x_
-____x
+x....
+.x...
+..x..
+...x.
+....x
 "
             );
         }

@@ -78,8 +78,6 @@ namespace GameOfLifeTests
             var updatedGame = initialGame.Next();
             updatedGame.IsCellAlive(2, 2).Should().BeTrue();
         }
-
-
     }
 
     public class Game

@@ -109,7 +109,7 @@ namespace GameOfLifeTests
             List<(int, int)> updatedState = new List<(int, int)>();
             foreach (var index in seed)
             {
-                if (NumberOfAliveNeighbors(index) == 2)
+                if (NumberOfAliveNeighbors(index) == 2 || NumberOfAliveNeighbors(index) == 3)
                 {
                     updatedState.Add(index);
                 }

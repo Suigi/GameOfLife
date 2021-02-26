@@ -6,11 +6,11 @@ namespace GameOfLife
 {
     public class Game
     {
-        private readonly (int row, int colum)[] seed;
+        private readonly (int row, int colum)[] aliveCells;
 
-        public Game(int rows, int columns, params (int row, int colum)[] seed)
+        public Game(int rows, int columns, params (int row, int colum)[] aliveCells)
         {
-            this.seed = seed;
+            this.aliveCells = aliveCells;
             Rows = rows;
             Columns = columns;
         }
@@ -19,13 +19,13 @@ namespace GameOfLife
 
         public int Columns { get; }
 
-        public IEnumerable<(int row, int column)> AliveCells => seed;
+        public IEnumerable<(int row, int column)> AliveCells => aliveCells;
 
         public bool IsCellAlive(int row, int column)
         {
             CheckBounds(row, column);
 
-            return seed.Contains((row, column));
+            return aliveCells.Contains((row, column));
         }
 
         private void CheckBounds(int row, int column)

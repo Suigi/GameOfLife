@@ -49,7 +49,7 @@ namespace GameOfLifeTests
 
     public class Game
     {
-        public Game(int rows, int columns)
+        public Game(int rows, int columns, params (int row, int colum)[] seed)
         {
             Rows = rows;
             Columns = columns;

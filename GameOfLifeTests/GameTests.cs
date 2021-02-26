@@ -46,6 +46,14 @@ namespace GameOfLifeTests
             seededGame.IsCellAlive(2, 2).Should().BeTrue();
         }
 
+        [TestMethod]
+        public void single_active_cell_is_dead_next_round()
+        {
+            var initialGame = new Game(10, 10, (2, 2));
+            var updatedGame = initialGame.Next();
+            updatedGame.IsCellAlive(2, 2).Should().BeFalse();
+        }
+
     }
 
     public class Game
@@ -76,6 +84,11 @@ namespace GameOfLifeTests
             {
                 throw new IndexOutOfRangeException($"Game index ({row},{column}) is out of bounds");
             }
+        }
+
+        public Game Next()
+        {
+            return this;
         }
     }
 }

@@ -59,7 +59,7 @@ namespace GameOfLifeTests
 
         private void CheckBounds(int row, int column)
         {
-            if (row >= Rows || row < 0 || column >= Columns || column < 0)
+            if (row < 0 || row >= Rows || column < 0 || column >= Columns)
             {
                 throw new IndexOutOfRangeException($"Game index ({row},{column}) is out of bounds");
             }

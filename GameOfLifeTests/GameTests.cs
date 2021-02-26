@@ -25,7 +25,6 @@ namespace GameOfLifeTests
             act.Should().Throw<IndexOutOfRangeException>().WithMessage("Game index (2,2) is out of bounds");
         }
 
-
         [TestMethod]
         public void a_new_game_has_dead_cells()
         {
@@ -46,8 +45,12 @@ namespace GameOfLifeTests
 
         public int Columns { get; }
 
-        public bool IsCellAlive(int i, int i1)
+        public bool IsCellAlive(int row, int column)
         {
+            if (row >= Rows)
+            {
+                throw new IndexOutOfRangeException($"Game index ({row},{column}) is out of bounds");
+            }
             return false;
         }
     }

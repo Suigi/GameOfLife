@@ -74,6 +74,11 @@ namespace GameOfLifeTests
 
         private int WrapRow(int row)
         {
+            if (row == rows)
+            {
+                return 0;
+            }
+
             return row < 0
                 ? rows - 1
                 : row;

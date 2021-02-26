@@ -124,13 +124,6 @@ namespace GameOfLifeTests
                     updatedState.Add(index);
                 }
             }
-            // foreach (var index in seed)
-            // {
-            //     if (NumberOfAliveNeighbors(index) == 2 || NumberOfAliveNeighbors(index) == 3)
-            //     {
-            //         updatedState.Add(index);
-            //     }
-            // }
 
             return new Game(Rows, Columns, updatedState.ToArray());
         }

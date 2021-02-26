@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -49,8 +50,11 @@ namespace GameOfLifeTests
 
     public class Game
     {
+        private readonly (int row, int colum)[] seed;
+
         public Game(int rows, int columns, params (int row, int colum)[] seed)
         {
+            this.seed = seed;
             Rows = rows;
             Columns = columns;
         }
@@ -63,7 +67,7 @@ namespace GameOfLifeTests
         {
             CheckBounds(row, column);
 
-            return false;
+            return seed.Contains((row, column));
         }
 
         private void CheckBounds(int row, int column)

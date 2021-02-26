@@ -18,11 +18,11 @@ namespace GameOfLifeTests
         [TestMethod]
         public void cells_outside_of_the_bounds_of_the_game_cannot_be_accessed()
         {
-            var game = new Game(2, 2);
+            var game = new Game(2, 1);
             
-            Action act = () => game.IsCellAlive(2, 2);
+            Action act = () => game.IsCellAlive(2, 1);
 
-            act.Should().Throw<IndexOutOfRangeException>().WithMessage("Game index (2,2) is out of bounds");
+            act.Should().Throw<IndexOutOfRangeException>().WithMessage("Game index (2,1) is out of bounds");
         }
 
         [TestMethod]

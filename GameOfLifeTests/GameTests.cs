@@ -88,7 +88,7 @@ namespace GameOfLifeTests
 
         public Game Next()
         {
-            return this;
+            return new Game(Rows, Columns);
         }
     }
 }

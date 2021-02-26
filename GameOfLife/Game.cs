@@ -41,17 +41,23 @@ namespace GameOfLife
         public Game Next()
         {
             List<(int, int)> updatedState = new List<(int, int)>();
-            foreach (var index in indexMechanics.AllIndices())
-            {
-                var numberOfAliveNeighbors = NumberOfAliveNeighbors(index);
-                if (numberOfAliveNeighbors == 3
-                    || (numberOfAliveNeighbors == 2 && IsCellAlive(index.row, index.column)))
-                {
-                    updatedState.Add(index);
-                }
-            }
+             foreach (var index in indexMechanics.AllIndices())
+             {
+                 if (IsCellAliveInNextIteration(index))
+                 {
+                     updatedState.Add(index);
+                 }
+             }
+            
+             return new Game(Rows, Columns, updatedState.ToArray());
+        }
 
-            return new Game(Rows, Columns, updatedState.ToArray());
+        private bool IsCellAliveInNextIteration((int row, int column) index)
+        {
+            var numberOfAliveNeighbors = NumberOfAliveNeighbors(index);
+            var isCellAlive = numberOfAliveNeighbors == 3
+                || (numberOfAliveNeighbors == 2 && IsCellAlive(index.row, index.column));
+            return isCellAlive;
         }
 
         private int NumberOfAliveNeighbors((int row, int colum) index)

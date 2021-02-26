@@ -7,12 +7,14 @@ namespace GameOfLife
     public class Game
     {
         private readonly (int row, int colum)[] aliveCells;
+        private readonly IndexMechanics indexMechanics;
 
         public Game(int rows, int columns, params (int row, int colum)[] aliveCells)
         {
             this.aliveCells = aliveCells;
             Rows = rows;
             Columns = columns;
+            indexMechanics = new IndexMechanics(Rows, Columns);
         }
 
         public int Rows { get; }
@@ -39,7 +41,7 @@ namespace GameOfLife
         public Game Next()
         {
             List<(int, int)> updatedState = new List<(int, int)>();
-            foreach (var index in AllIndices())
+            foreach (var index in indexMechanics.AllIndices())
             {
                 var numberOfAliveNeighbors = NumberOfAliveNeighbors(index);
                 if (numberOfAliveNeighbors == 3
@@ -52,20 +54,9 @@ namespace GameOfLife
             return new Game(Rows, Columns, updatedState.ToArray());
         }
 
-        private IEnumerable<(int row, int column)> AllIndices()
-        {
-            for (int row = 0; row < Rows; row++)
-            {
-                for (int column = 0; column < Columns; column++)
-                {
-                    yield return (row, column);
-                }
-            }
-        }
-
         private int NumberOfAliveNeighbors((int row, int colum) index)
         {
-            var numberOfAliveNeighbors = new IndexMechanics(Rows, Columns).Neighbors(index)
+            var numberOfAliveNeighbors = indexMechanics.Neighbors(index)
                 .Count(n => IsCellAlive(n.row, n.column));
             return numberOfAliveNeighbors;
         }

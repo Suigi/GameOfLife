@@ -30,7 +30,7 @@ namespace GameOfLifeTests
         }
 
         [TestMethod]
-        public void neighbor_indices_rows_wrap_around()
+        public void negative_row_indices_wrap_around()
         {
             new IndexMechanics(10,10).Neighbors((0, 2)).Should().BeEquivalentTo(
                 (9, 1),

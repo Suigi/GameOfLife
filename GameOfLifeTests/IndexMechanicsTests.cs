@@ -29,6 +29,22 @@ namespace GameOfLifeTests
             );
         }
 
+        [TestMethod]
+        public void neighbor_indices_rows_wrap_around()
+        {
+            // we're assuming 10 rows at the moment, we'll fix this shortly
+            IndexMechanics.Neighbors((0, 2)).Should().BeEquivalentTo(
+                (9, 1),
+                (9, 2),
+                (9, 3),
+                (0, 1),
+                (0, 3),
+                (1, 1),
+                (1, 2),
+                (1, 3)
+            );
+        }
+
     }
 
     public static class IndexMechanics

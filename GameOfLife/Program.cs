@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using GameOfLife.HorribleOutsideWorld;
 
 namespace GameOfLife
 {
@@ -6,7 +8,31 @@ namespace GameOfLife
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var stable = false;
+            var game =
+                new GameSeeder(RandomNumbers.FromSeed(new Random().Next()), 0.1).Create(15, 15);
+            var printer = new GamePrinter();
+            while (!stable)
+            {
+                Console.Clear();
+                Console.Write(printer.Print(game));
+                var aliveCellsBefore = game.AliveCells.ToList();
+                game = game.Next();
+                var aliveCellsAfter = game.AliveCells.ToList();
+
+                if (!aliveCellsAfter.Except(aliveCellsBefore).Any())
+                {
+                    stable = true;
+                }
+                
+                Console.ReadLine();
+            }
+
+            Console.WriteLine(
+                game.AliveCells.Any()
+                    ? "Game is stable"
+                    : "They are all gone :("
+            );
         }
     }
 }

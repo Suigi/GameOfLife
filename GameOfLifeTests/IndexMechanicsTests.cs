@@ -86,17 +86,22 @@ namespace GameOfLifeTests
 
             return value;
         }
+
+        private int WrapRow(int row)
+        {
+            return WrapIndex(row, rows);
+        }
         
         public IEnumerable<(int row,int column)> Neighbors((int row, int column) valueTuple)
         {
-            yield return (WrapIndex(valueTuple.row - 1, rows), valueTuple.column - 1);
-            yield return (WrapIndex(valueTuple.row - 1, rows), valueTuple.column);
-            yield return (WrapIndex(valueTuple.row - 1, rows), valueTuple.column + 1);
+            yield return (WrapRow(valueTuple.row - 1), valueTuple.column - 1);
+            yield return (WrapRow(valueTuple.row - 1), valueTuple.column);
+            yield return (WrapRow(valueTuple.row - 1), valueTuple.column + 1);
             yield return (valueTuple.row, valueTuple.column - 1);
             yield return (valueTuple.row, valueTuple.column + 1);
-            yield return (WrapIndex(valueTuple.row + 1, rows), valueTuple.column - 1);
-            yield return (WrapIndex(valueTuple.row + 1, rows), valueTuple.column);
-            yield return (WrapIndex(valueTuple.row + 1, rows), valueTuple.column + 1);
+            yield return (WrapRow(valueTuple.row + 1), valueTuple.column - 1);
+            yield return (WrapRow(valueTuple.row + 1), valueTuple.column);
+            yield return (WrapRow(valueTuple.row + 1), valueTuple.column + 1);
         }
     }
 }

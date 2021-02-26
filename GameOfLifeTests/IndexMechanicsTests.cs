@@ -49,16 +49,23 @@ namespace GameOfLifeTests
 
     public static class IndexMechanics
     {
+        private static int WrapRow(int row)
+        {
+            return row < 0
+                ? 9
+                : row;
+        }
+        
         public static IEnumerable<(int row,int column)> Neighbors((int row, int column) valueTuple)
         {
-            yield return (valueTuple.row - 1, valueTuple.column - 1);
-            yield return (valueTuple.row - 1, valueTuple.column);
-            yield return (valueTuple.row - 1, valueTuple.column + 1);
+            yield return (WrapRow(valueTuple.row - 1), valueTuple.column - 1);
+            yield return (WrapRow(valueTuple.row - 1), valueTuple.column);
+            yield return (WrapRow(valueTuple.row - 1), valueTuple.column + 1);
             yield return (valueTuple.row, valueTuple.column - 1);
             yield return (valueTuple.row, valueTuple.column + 1);
-            yield return (valueTuple.row + 1, valueTuple.column - 1);
-            yield return (valueTuple.row + 1, valueTuple.column);
-            yield return (valueTuple.row + 1, valueTuple.column + 1);
+            yield return (WrapRow(valueTuple.row + 1), valueTuple.column - 1);
+            yield return (WrapRow(valueTuple.row + 1), valueTuple.column);
+            yield return (WrapRow(valueTuple.row + 1), valueTuple.column + 1);
         }
     }
 }

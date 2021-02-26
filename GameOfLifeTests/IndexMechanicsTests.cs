@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -125,7 +124,6 @@ namespace GameOfLifeTests
         {
             return WrapIndex(column, columns);
         }
-        
         
         public IEnumerable<(int row,int column)> Neighbors((int row, int column) valueTuple)
         {

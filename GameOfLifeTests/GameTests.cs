@@ -47,12 +47,21 @@ namespace GameOfLifeTests
         }
 
         [TestMethod]
-        public void single_active_cell_is_dead_next_round()
+        public void single_alive_cell_is_dead_next_round()
         {
             var initialGame = new Game(10, 10, (2, 2));
             var updatedGame = initialGame.Next();
             updatedGame.IsCellAlive(2, 2).Should().BeFalse();
         }
+
+        [TestMethod]
+        public void alive_cell_with_two_neighbors_survives()
+        {
+            var initialGame = new Game(10, 10, (2, 2), (1, 2), (3, 2));
+            var updatedGame = initialGame.Next();
+            updatedGame.IsCellAlive(2, 2).Should().BeTrue();
+        }
+
 
     }
 

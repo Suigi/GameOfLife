@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
+using GameOfLife;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GameOfLifeTests

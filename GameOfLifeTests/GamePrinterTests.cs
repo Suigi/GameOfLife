@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System;
+using System.Text;
+using FluentAssertions;
 using GameOfLife;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -15,7 +17,7 @@ namespace GameOfLifeTests
 
             var result = printer.Print(emptyGame);
 
-            result.Should().Be("__\n__\n__");
+            result.Should().Be($"__{Environment.NewLine}__{Environment.NewLine}");
         }
     }
 
@@ -23,7 +25,19 @@ namespace GameOfLifeTests
     {
         public string Print(Game game)
         {
-            throw new System.NotImplementedException();
+            var builder = new StringBuilder();
+
+            for (int row = 0; row < game.Rows; row++)
+            {
+                for (int column = 0; column < game.Columns; column++)
+                {
+                    builder.Append("_");
+                }
+
+                builder.AppendLine();
+            }
+
+            return builder.ToString();
         }
     }
 }

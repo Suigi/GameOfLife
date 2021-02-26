@@ -74,6 +74,20 @@ namespace GameOfLifeTests
             );            
         }
 
+        [TestMethod]
+        public void high_column_indices_wrap_to_the_left()
+        {
+            new IndexMechanics(10,5).Neighbors((2, 4)).Should().BeEquivalentTo(
+                (1, 3),
+                (1, 4),
+                (1, 0),
+                (2, 3),
+                (2, 0),
+                (3, 3),
+                (3, 4),
+                (3, 0)
+            );            
+        }
     }
 
     public class IndexMechanics

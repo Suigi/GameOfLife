@@ -25,7 +25,7 @@ namespace GameOfLife
         private bool IsNextAlive()
         {
             randomEnumerator.MoveNext();
-            return randomEnumerator.Current > probability;
+            return randomEnumerator.Current > 1 - probability;
         }
     }
 }

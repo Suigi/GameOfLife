@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace GameOfLife
 {
@@ -15,18 +16,10 @@ namespace GameOfLife
 
         public Game Create(int rows, int columns)
         {
-            var seed = new List<(int, int)>();
-            for (int row = 0; row < rows; row++)
-            {
-                for (int column = 0; column < columns; column++)
-                {
-                    if (IsNextAlive())
-                    {
-                        seed.Add((row,column));
-                    }
-                }
-            }
-            return new Game(rows, columns, seed.ToArray());
+            var aliveCells = new IndexMechanics(rows, columns).AllIndices()
+                .Where(_ => IsNextAlive())
+                .ToArray();
+            return new Game(rows, columns, aliveCells);
         }
 
         private bool IsNextAlive()

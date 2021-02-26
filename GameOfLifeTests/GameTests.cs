@@ -15,14 +15,16 @@ namespace GameOfLifeTests
             game.Columns.Should().Be(3);
         }
 
-        [TestMethod]
-        public void cells_outside_of_the_bounds_of_the_game_cannot_be_accessed()
+        [DataTestMethod]
+        [DataRow(2, 1, "(2,1)", DisplayName = "row is out of bounds")]
+        public void cells_outside_of_the_bounds_of_the_game_cannot_be_accessed(int row, int column,
+            string formattedIndex)
         {
-            var game = new Game(2, 1);
-            
-            Action act = () => game.IsCellAlive(2, 1);
+            var game = new Game(row, column);
 
-            act.Should().Throw<IndexOutOfRangeException>().WithMessage("Game index (2,1) is out of bounds");
+            Action act = () => game.IsCellAlive(row, column);
+
+            act.Should().Throw<IndexOutOfRangeException>().WithMessage($"Game index {formattedIndex} is out of bounds");
         }
 
         [TestMethod]
@@ -51,6 +53,7 @@ namespace GameOfLifeTests
             {
                 throw new IndexOutOfRangeException($"Game index ({row},{column}) is out of bounds");
             }
+
             return false;
         }
     }

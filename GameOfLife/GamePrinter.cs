@@ -12,14 +12,9 @@ namespace GameOfLife
             {
                 for (int column = 0; column < game.Columns; column++)
                 {
-                    if (game.IsCellAlive(row, column))
-                    {
-                        builder.Append('x');
-                    }
-                    else
-                    {
-                        builder.Append("_");
-                    }
+                    builder.Append(game.IsCellAlive(row, column)
+                        ? "x"
+                        : "_");
                 }
 
                 builder.AppendLine();

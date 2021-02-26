@@ -59,6 +59,21 @@ namespace GameOfLifeTests
             );
         }
 
+        [TestMethod]
+        public void negative_column_indices_wrap_to_the_right()
+        {
+            new IndexMechanics(10,10).Neighbors((2, 0)).Should().BeEquivalentTo(
+                (1, 9),
+                (1, 0),
+                (1, 1),
+                (2, 9),
+                (2, 1),
+                (3, 9),
+                (3, 0),
+                (3, 1)
+            );            
+        }
+
     }
 
     public class IndexMechanics

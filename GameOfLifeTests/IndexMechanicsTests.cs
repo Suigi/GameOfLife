@@ -13,6 +13,22 @@ namespace GameOfLifeTests
         {
             IndexMechanics.Neighbors((2, 2)).Should().HaveCount(8);
         }
+
+        [TestMethod]
+        public void neighbor_indices_indicate_cells_around_the_initial_cell()
+        {
+            IndexMechanics.Neighbors((2, 2)).Should().BeEquivalentTo(
+                (1, 1),
+                (1, 2),
+                (1, 3),
+                (2, 1),
+                (2, 3),
+                (3, 1),
+                (3, 2),
+                (3, 3)
+            );
+        }
+
     }
 
     public static class IndexMechanics

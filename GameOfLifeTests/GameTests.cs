@@ -51,7 +51,7 @@ namespace GameOfLifeTests
 
         public bool IsCellAlive(int row, int column)
         {
-            if (row >= Rows)
+            if (row >= Rows || row < 0)
             {
                 throw new IndexOutOfRangeException($"Game index ({row},{column}) is out of bounds");
             }

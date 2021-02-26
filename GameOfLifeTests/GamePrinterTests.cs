@@ -48,7 +48,6 @@ ____x
             );
         }
 
-
         private void AssertPrintout(string actual, string expected)
         {
             actual.Trim().Should().Be(expected.Trim());
@@ -65,7 +64,14 @@ ____x
             {
                 for (int column = 0; column < game.Columns; column++)
                 {
-                    builder.Append("_");
+                    if (game.IsCellAlive(row, column))
+                    {
+                        builder.Append('x');
+                    }
+                    else
+                    {
+                        builder.Append("_");
+                    }
                 }
 
                 builder.AppendLine();

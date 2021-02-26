@@ -30,7 +30,7 @@ namespace GameOfLifeTests
         }
 
         [TestMethod]
-        public void negative_row_indices_wrap_around()
+        public void negative_row_indices_wrap_around_to_the_bottom()
         {
             new IndexMechanics(10,10).Neighbors((0, 2)).Should().BeEquivalentTo(
                 (9, 1),
@@ -41,6 +41,21 @@ namespace GameOfLifeTests
                 (1, 1),
                 (1, 2),
                 (1, 3)
+            );
+        }
+
+        [TestMethod]
+        public void high_row_indices_wrap_around_to_the_top()
+        {
+            new IndexMechanics(5,5).Neighbors((4, 2)).Should().BeEquivalentTo(
+                (3, 1),
+                (3, 2),
+                (3, 3),
+                (4, 1),
+                (4, 3),
+                (0, 1),
+                (0, 2),
+                (0, 3)
             );
         }
 

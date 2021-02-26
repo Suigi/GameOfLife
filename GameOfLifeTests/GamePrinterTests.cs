@@ -13,11 +13,25 @@ namespace GameOfLifeTests
         public void print_empty_grid_for_empty_game()
         {
             var printer = new GamePrinter();
-            var emptyGame = new Game(2,2);
+            var emptyGame = new Game(5,5);
 
             var result = printer.Print(emptyGame);
 
-            result.Should().Be($"__{Environment.NewLine}__{Environment.NewLine}");
+            AssertPrintout(result,
+                @"
+_____
+_____
+_____
+_____
+_____
+"
+            );
+            result.Should().EndWith(Environment.NewLine);
+        }
+
+        private void AssertPrintout(string actual, string expected)
+        {
+            actual.Trim().Should().Be(expected.Trim());
         }
     }
 
